@@ -21,7 +21,7 @@ function Navbar(){
                     <li className="nav-item">
                         <a className="nav-link fw-bold px-3 nav-comp" Link="#">Articles</a>
                     </li>
-                    <button class="btn fw-bold my-2 rounded-5 px-3 my-sm-0 btn-nav" type="submit">Sign In</button>
+                    <button class="btn fw-bold my-2 rounded-5 px-3 my-sm-0 btn-nav-s" type="submit">Sign In</button>
                 </ul>
             </div>
         </nav>

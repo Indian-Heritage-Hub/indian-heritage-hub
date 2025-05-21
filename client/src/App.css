@@ -53,12 +53,50 @@ body{
   color: #A31D1D;
 }
 
-.btn-nav{
+.nav-comp:hover{
+  color: #A31D1D;
+  cursor: pointer;
+}
+
+.btn-nav-s{
   background-color: #A31D1D;
   color: #E5D0AC;
-  border: #6D2323;
+  border: solid 1px #6D2323;
+}
+
+.btn-nav-s :hover{
+  background-color: #6D2323;
+  border: #6D2323 solid 1px;
 }
 
 .navbar-title{
   color: #A31D1D;
+}
+
+.img-login{
+  width: 100%;
+}
+
+.login-head{
+  color: #A31D1D;
+}
+
+.login-div{
+  border: solid 1px #6D2323;
+  width: 100%;
+  background-color: #FEF9E1;
+}
+
+.login-label{
+  color: #A31D1D;
+}
+
+.input-box{
+  border: solid 1px #6D2323;
+  background-color: #E5D0AC;
+}
+
+.login-main-div{
+  border: 1px solid #6D2323;
+  background-color: #E5D0AC;
 }
