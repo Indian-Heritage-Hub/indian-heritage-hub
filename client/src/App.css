@@ -100,3 +100,38 @@ body{
   border: 1px solid #6D2323;
   background-color: #E5D0AC;
 }
+
+.discover-img{
+  width: 80%;
+  height: max-content;
+}
+
+
+.nunito-sans-<uniquifier> {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+}
+
+.discover-text{
+  color: #A31D1D;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.discover-btn{
+  background-color: #A31D1D;
+  color: #E5D0AC;
+  margin-left: 65px;
+}
+
+.hero-div{
+  color: #A31D1D;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
