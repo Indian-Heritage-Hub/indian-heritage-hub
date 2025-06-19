@@ -1,0 +1,33 @@
+package com.sunbeam.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sunbeam.services.AdminService;
+
+public class AdminController {
+	@Autowired
+	AdminService service;
+	
+	@GetMapping("/")
+	public String home() {
+		return "index"; // index.jsp
+	}
+	
+	@PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody Users user) {
+        service.register(user);
+        return ResponseEntity.ok("User registered successfully");
+	}
+	
+	@PostMapping("/login")
+	public String login(@RequestParam String email, @RequestParam String password, Model model) {
+		Users s = service.login(email, password);
+		if (s != null) {
+			model.addAttribute("users", s);
+			return "welcome"; // success page
+		}
+		return "login"; // back to login
+	}
+
+}
+}

@@ -1,0 +1,65 @@
+package com.sunbeam.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class NotificationServiceImpl {
+	@Autowired
+    private NotificationDaos notificationDaos;
+
+    @Override
+    public Notification create(Notification notification) {
+        return notificationDaos.save(notification);
+    }
+
+    @Override
+    public Notification update(Long id, Notification updatedNotification) {
+        Optional<Notification> optional = notificationDaos.findById(id);
+        if (optional.isPresent()) {
+            Notification existing = optional.get();
+
+            existing.setUserId(updatedNotification.getUserId());
+            existing.setSenderId(updatedNotification.getSenderId());
+            existing.setNotificationType(updatedNotification.getNotificationType());
+            existing.setMessage(updatedNotification.getMessage());
+            existing.setIsRead(updatedNotification.getIsRead());
+            existing.setReferenceId(updatedNotification.getReferenceId());
+            existing.setReferenceType(updatedNotification.getReferenceType());
+            existing.setX1(updatedNotification.getX1());
+            existing.setX2(updatedNotification.getX2());
+            existing.setX3(updatedNotification.getX3());
+            existing.setX4(updatedNotification.getX4());
+            existing.setX5(updatedNotification.getX5());
+            existing.setX6(updatedNotification.getX6());
+
+            return notificationDaos.save(existing);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        if (notificationDaos.existsById(id)) {
+            notificationDaos.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Notification getById(Long id) {
+        return notificationDaos.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Notification> getAll() {
+        return notificationDaos.findAll();
+    }
+
+    @Override
+    public List<Notification> getByUserId(Long userId) {
+        return notificationDaos.findByUserId(userId);
+    }
+}
+}

@@ -1,0 +1,17 @@
+package com.sunbeam.services;
+
+
+@Service
+public class FeedbackServicesImpl {
+	@Autowired
+	private FeedbackDaos feedbackDaos;
+
+	@Override
+	public Feedback addFeedback(Feedback feedback) {
+		feedback.setCreatedAt(LocalDateTime.now());
+		feedback.setUpdatedAt(LocalDateTime.now());
+		return feedbackDaos.save(feedback);
+	}
+
+	
+}

@@ -1,0 +1,58 @@
+package com.sunbeam.services;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sunbeam.daos.FeedbackDaos;
+import com.sunbeam.entities.Feedback;
+
+@Service
+public class FeedbackServicesImpl {
+	@Autowired
+	private FeedbackDaos feedbackDaos;
+
+	@Override
+	public Feedback addFeedback(Feedback feedback) {
+		feedback.setCreatedAt(LocalDateTime.now());
+		feedback.setUpdatedAt(LocalDateTime.now());
+		return feedbackDaos.save(feedback);
+	}
+
+	@Override
+	public Feedback updateFeedback(Long id, Feedback updated) {
+		Optional<Feedback> optional = feedbackDaos.findById(id);
+		if (optional.isPresent()) {
+			Feedback fb = optional.get();
+			fb.setRating(updated.getRating());
+			fb.setComment(updated.getComment());
+			fb.setUpdatedAt(LocalDateTime.now());
+			fb.setX1(updated.getX1());
+			fb.setX2(updated.getX2());
+			fb.setX3(updated.getX3());
+			fb.setX4(updated.getX4());
+			fb.setX5(updated.getX5());
+			fb.setX6(updated.getX6());
+			return feedbackDaos.save(fb);
+		}
+		return null;
+	}
+
+	@Override
+	public List<Feedback> getAllFeedbacks() {
+		return feedbackDaos.findAll();
+	}
+
+	@Override
+	public Feedback getFeedbackById(Long id) {
+		return feedbackDaos.findById(id).orElse(null);
+	}
+
+	@Override
+	public void deleteFeedback(Long id) {
+		feedbackDaos.deleteById(id);
+	}
+}

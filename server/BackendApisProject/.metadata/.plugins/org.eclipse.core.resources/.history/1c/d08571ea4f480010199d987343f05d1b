@@ -1,0 +1,5 @@
+package com.sunbeam.converter;
+
+public class MapToJsonConverter {
+
+}

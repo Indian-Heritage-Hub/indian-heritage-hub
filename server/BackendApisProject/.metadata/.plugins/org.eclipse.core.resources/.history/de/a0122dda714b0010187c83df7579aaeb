@@ -1,0 +1,39 @@
+package com.sunbeam.controllers;
+
+@RestController
+@RequestMapping("/notifications")
+@CrossOrigin(origins = "*")
+public class NotificationControllers {
+	@Autowired
+	private NotificationService notificationService;
+
+	@PostMapping
+	public Notification create(@RequestBody Notification notification) {
+		return notificationService.create(notification);
+	}
+
+	@PutMapping("/{id}")
+	public Notification update(@PathVariable Long id, @RequestBody Notification notification) {
+		return notificationService.update(id, notification);
+	}
+
+	@DeleteMapping("/{id}")
+	public String delete(@PathVariable Long id) {
+		return notificationService.delete(id) ? "Deleted successfully." : "Notification not found.";
+	}
+
+	@GetMapping("/{id}")
+	public Notification getById(@PathVariable Long id) {
+		return notificationService.getById(id);
+	}
+
+	@GetMapping
+	public List<Notification> getAll() {
+		return notificationService.getAll();
+	}
+
+	@GetMapping("/user/{userId}")
+	public List<Notification> getByUserId(@PathVariable Long userId) {
+		return notificationService.getByUserId(userId);
+	}
+}

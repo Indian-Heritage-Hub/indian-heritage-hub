@@ -1,0 +1,34 @@
+package com.sunbeam.controllers;
+
+@RestController
+@RequestMapping("/feedbacks")
+public class FeedbackController {
+	 @Autowired
+	    private FeedbackServices feedbackServices;
+
+	    @PostMapping
+	    public Feedback addFeedback(@RequestBody Feedback feedback) {
+	        return feedbackServices.addFeedback(feedback);
+	    }
+
+	    @PutMapping("/{id}")
+	    public Feedback updateFeedback(@PathVariable Long id, @RequestBody Feedback feedback) {
+	        return feedbackServices.updateFeedback(id, feedback);
+	    }
+
+	    @GetMapping
+	    public List<Feedback> getAllFeedbacks() {
+	        return feedbackServices.getAllFeedbacks();
+	    }
+
+	    @GetMapping("/{id}")
+	    public Feedback getFeedbackById(@PathVariable Long id) {
+	        return feedbackServices.getFeedbackById(id);
+	    }
+
+	    @DeleteMapping("/{id}")
+	    public void deleteFeedback(@PathVariable Long id) {
+	        feedbackServices.deleteFeedback(id);
+	    }
+	}
+

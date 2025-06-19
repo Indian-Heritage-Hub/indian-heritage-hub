@@ -1,0 +1,14 @@
+package com.sunbeam.services;
+
+public interface AdminService {
+	@Autowired
+    private AdminDao adminDao;
+    
+    public Admin login(String email, String password) {
+        return adminDao.findByEmailAndPassword(email, password);
+    }
+
+    public Admin register(Admin admin) {
+        return adminDao.save(admin);
+    }
+}

@@ -1,0 +1,19 @@
+package com.sunbeam.entities;
+
+import java.sql.Timestamp;
+import java.util.Map;
+
+public class Admin {
+	private String id;
+	private String name;
+	private String email;
+	private String password;
+	private String role;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
+	private Timestamp lastLogin;
+	private String status;
+	private Map<String, Object> permissions; // JSON stored as Map
+	private String adminNotes;
+	private String ipAddress;
+}
