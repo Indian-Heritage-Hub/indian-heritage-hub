@@ -1,0 +1,16 @@
+package com.sunbeam.services;
+
+import org.springframework.stereotype.Service;
+
+import com.sunbeam.daos.AdminDao;
+
+@Service
+public class AdminServiceImpl implements AdminService{
+	private AdminDao adminDao;
+	
+	@Autowired
+	public PizzaUserServiceImpl(PizzaCustomerDao userDao) {
+		this.userDao = userDao;
+	}
+	
+}

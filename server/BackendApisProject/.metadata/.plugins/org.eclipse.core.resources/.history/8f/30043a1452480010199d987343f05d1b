@@ -1,0 +1,49 @@
+package com.sunbeam.controllers;
+
+import com.sunbeam.entities.Admin;
+import com.sunbeam.services.AdminService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/admin")
+public class AdminController {
+
+    @Autowired
+    private AdminService adminService;
+
+    @GetMapping("/all")
+    public List<Admin> getAllAdmins() {
+        return adminService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Admin> getAdminById(@PathVariable int id) {
+        return adminService.findById(id);
+    }
+
+    @PostMapping("/create")
+    public Admin createAdmin(@RequestBody Admin admin) {
+        return adminService.save(admin);
+    }
+
+    @PutMapping("/update")
+    public Admin updateAdmin(@RequestBody Admin admin) {
+        return adminService.save(admin);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteAdmin(@PathVariable int id) {
+        adminService.deleteById(id);
+        return "Deleted admin with ID: " + id;
+    }
+
+    @PostMapping("/login")
+    public Admin login(@RequestParam String email, @RequestParam String password) {
+        return adminService.login(email, password);
+    }
+}

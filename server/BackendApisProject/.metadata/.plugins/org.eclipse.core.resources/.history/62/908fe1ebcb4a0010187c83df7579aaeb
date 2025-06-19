@@ -1,0 +1,23 @@
+package com.sunbeam.services;
+
+import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sunbeam.daos.FeedbackDaos;
+import com.sunbeam.entities.Feedback;
+
+@Service
+public class FeedbackServicesImpl {
+	@Autowired
+	private FeedbackDaos feedbackDaos;
+
+	public Feedback addFeedback(Feedback feedback) {
+		feedback.setCreatedAt(LocalDateTime.now());
+		feedback.setUpdatedAt(LocalDateTime.now());
+		return feedbackDaos.save(feedback);
+	}
+
+	
+}

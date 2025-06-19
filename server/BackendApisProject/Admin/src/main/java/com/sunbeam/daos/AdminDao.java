@@ -1,0 +1,11 @@
+package com.sunbeam.daos;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.sunbeam.entities.Admin;
+
+public interface AdminDao extends JpaRepository<Admin, Long> {
+    // Custom query method: finds Admin by email
+    Admin findByEmail(String email);
+
+    // No need for register() — use save() in service layer
+}

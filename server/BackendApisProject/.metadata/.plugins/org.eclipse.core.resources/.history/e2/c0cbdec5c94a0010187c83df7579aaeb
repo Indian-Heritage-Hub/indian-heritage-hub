@@ -1,0 +1,14 @@
+package com.sunbeam.services;
+
+public interface FeedbackServices {
+	
+	Feedback addFeedback(Feedback feedback);
+
+	Feedback updateFeedback(Long id, Feedback feedback);
+
+	List<Feedback> getAllFeedbacks();
+
+	Feedback getFeedbackById(Long id);
+
+	void deleteFeedback(Long id);
+}

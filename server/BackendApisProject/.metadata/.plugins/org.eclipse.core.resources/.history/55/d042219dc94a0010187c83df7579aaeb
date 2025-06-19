@@ -1,0 +1,36 @@
+package com.sunbeam.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "feedback")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class feedback {
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Long id;
+
+	    private Long userId;
+	    private Long articleId;
+	    private BigDecimal rating;
+	    
+	    private String comment;
+
+	    private LocalDateTime createdAt;
+	    private LocalDateTime updatedAt;
+
+	    private String x1;
+	    private String x2;
+	    private String x3;
+	    private String x4;
+	    private String x5;
+	    private String x6;
+	}
+

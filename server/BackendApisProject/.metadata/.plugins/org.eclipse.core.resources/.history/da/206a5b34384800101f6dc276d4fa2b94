@@ -1,0 +1,12 @@
+package com.sunbeam.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sunbeam.daos.AdminDao;
+import com.sunbeam.entities.Admin;
+
+public interface AdminService {
+	Admin getAdminByEmail(String email);
+	
+	
+}

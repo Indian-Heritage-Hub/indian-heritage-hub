@@ -1,0 +1,37 @@
+package com.sunbeam.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+
+import com.sunbeam.entities.Admin;
+import com.sunbeam.services.AdminService;
+
+
+public class AdminController {
+	@Autowired
+	AdminService service;
+	
+//	@GetMapping("/")
+//	public String home() {
+//		return "index"; // index.jsp
+//	}
+	
+
+//	@PostMapping("/register")
+//	public ResponseEntity<String> register(@RequestBody Admin admin) {
+//		service.register(admin);
+//		return ResponseEntity.ok("User registered successfully");
+//	}
+
+	@PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody Admin admin) {
+        service.register(admin);
+        return ResponseEntity.ok("User registered successfully");
+	}
+
+}

@@ -1,0 +1,44 @@
+package com.sunbeam.entities;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "notification")
+
+public class Notification {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private Long userId;
+    private Long senderId;
+    private String notificationType;
+    
+    @Column(columnDefinition = "TEXT")
+    private String message;
+
+    private Boolean isRead = false;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    private Long referenceId;
+    private String referenceType;
+
+    private String x1;
+    private String x2;
+    private String x3;
+    private String x4;
+    private String x5;
+    private String x6;
+
+    
+}
+

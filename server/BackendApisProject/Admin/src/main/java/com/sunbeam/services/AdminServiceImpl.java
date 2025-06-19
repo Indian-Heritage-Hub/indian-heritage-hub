@@ -1,0 +1,46 @@
+package com.sunbeam.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sunbeam.daos.AdminDao;
+import com.sunbeam.entities.Admin;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+
+    @Autowired
+    private AdminDao adminDao;
+
+    @Override
+    public List<Admin> findAll() {
+        return adminDao.findAll();
+    }
+
+    @Override
+    public Optional<Admin> findById(long id) {
+        return adminDao.findById(id);
+    }
+
+    @Override
+    public Admin save(Admin admin) {
+        return adminDao.save(admin);
+    }
+
+    @Override
+    public void deleteById(long id) {
+        adminDao.deleteById(id);
+    }
+
+    @Override
+    public Admin login(String email, String password) {
+        Admin admin = adminDao.findByEmail(email);
+        if (admin != null && admin.getPassword().equals(password)) {
+            return admin;
+        }
+        return null;
+    }
+}

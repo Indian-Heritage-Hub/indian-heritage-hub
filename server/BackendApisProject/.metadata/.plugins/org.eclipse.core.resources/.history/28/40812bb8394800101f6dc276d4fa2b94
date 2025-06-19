@@ -1,0 +1,6 @@
+package com.sunbeam.controllers;
+
+@RestControllerAdvice
+public class ExceptionHandlingAdvice {
+
+}
