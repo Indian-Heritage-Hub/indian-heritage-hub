@@ -1,0 +1,25 @@
+package com.sunbeam.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sunbeam.daos.AdminDao;
+import com.sunbeam.entities.Admin;
+
+public interface AdminService {
+
+//	Admin getAdminByEmail(String email);
+
+	List<Admin> findAll();
+
+	Optional<Admin> findById(long id);
+
+	Admin save(Admin admin);
+
+	void deleteById(long id);
+
+	Admin login(String email, String password);
+
+}

@@ -1,0 +1,46 @@
+package com.sunbeam.controllers;
+
+	@RestController
+	@RequestMapping("/interactions")
+	public class ArticleInteractionsController {
+
+	    @Autowired
+	    private ArticleInteractionsService service;
+
+	    @GetMapping
+	    public List<ArticleInteractions> getAll() {
+	        return service.getAllInteractions();
+	    }
+
+	    @GetMapping("/{id}")
+	    public ResponseEntity<?> getById(@PathVariable Long id) {
+	        return service.getInteractionById(id);
+	    }
+
+	    @PostMapping
+	    public ResponseEntity<?> create(@RequestBody ArticleInteractions interaction) {
+	        return service.createInteraction(interaction);
+	    }
+
+	    @PutMapping("/{id}")
+	    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody ArticleInteractions interaction) {
+	        return service.updateInteraction(id, interaction);
+	    }
+
+	    @DeleteMapping("/{id}")
+	    public ResponseEntity<?> delete(@PathVariable Long id) {
+	        return service.deleteInteraction(id);
+	    }
+
+	    @GetMapping("/by-article/{articleId}")
+	    public List<ArticleInteractions> getByArticleId(@PathVariable Long articleId) {
+	        return service.getByArticleId(articleId);
+	    }
+
+	    @GetMapping("/by-user/{userId}")
+	    public List<ArticleInteractions> getByUserId(@PathVariable Long userId) {
+	        return service.getByUserId(userId);
+	    }
+	}
+
+

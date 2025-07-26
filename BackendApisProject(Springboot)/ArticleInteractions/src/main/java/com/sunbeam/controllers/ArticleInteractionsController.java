@@ -1,0 +1,56 @@
+package com.sunbeam.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sunbeam.entities.ArticleInteractions;
+import com.sunbeam.services.ArticleInteractionsService;
+
+@RestController
+@RequestMapping("/interactions")
+public class ArticleInteractionsController {
+	@Autowired
+	private ArticleInteractionsService service;
+
+	@GetMapping("/all")
+	public ResponseEntity<List<ArticleInteractions>> getAll() {
+		return ResponseEntity.ok(service.getAll());
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<ResponseUtil<ArticleInteractions>> getById(@PathVariable Long id) {
+	    ArticleInteractions data = service.getById(id);
+	    if (data != null)
+	        return ResponseEntity.ok(ResponseUtil.apiSuccess(data));
+	    return ResponseEntity.status(404).body(ResponseUtil.apiError("Interaction not found"));
+	}
+
+	@PostMapping("/add")
+	public ResponseEntity<ResponseUtil<ArticleInteractions>> create(@RequestBody ArticleInteractions interaction) {
+	    ArticleInteractions created = service.create(interaction);
+	    return ResponseEntity.ok(ResponseUtil.apiSuccess(created));
+	}
+
+	@PutMapping("/update/{id}")
+	public ResponseEntity<ArticleInteractions> update(@PathVariable Long id,
+			@RequestBody ArticleInteractions interaction) {
+		ArticleInteractions updated = service.update(id, interaction);
+		return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
+	}
+
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+		service.delete(id);
+		return ResponseEntity.ok().build();
+	}
+}

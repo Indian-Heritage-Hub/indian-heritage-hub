@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 9.2.0, for Win64 (x86_64)
 --
--- Host: localhost    Database: indain_heritage_hub_db
+-- Host: localhost    Database: indian_heritage_hub_db
 -- ------------------------------------------------------
 -- Server version	9.2.0
 

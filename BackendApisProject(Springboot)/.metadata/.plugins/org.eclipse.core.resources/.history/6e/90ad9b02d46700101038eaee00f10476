@@ -1,0 +1,47 @@
+package com.sunbeam.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sunbeam.daos.ArticleInteractionsDaos;
+import com.sunbeam.entities.ArticleInteractions;
+
+@Service
+public class ArticleInteractionsServiceImpl implements ArticleInteractionsService {
+	
+	 @Autowired
+	    private ArticleInteractionsDaos dao;
+
+	    @Override
+	    public List<ArticleInteractions> getAll() {
+	        return dao.findAll();
+	    }
+
+	    @Override
+	    public ArticleInteractions getById(Long id) {
+	        Optional<ArticleInteractions> result = dao.findById(id);
+	        return result.orElse(null);
+	    }
+
+	    @Override
+	    public ArticleInteractions create(ArticleInteractions interaction) {
+	        return dao.save(interaction);
+	    }
+
+	    @Override
+	    public ArticleInteractions update(Long id, ArticleInteractions updatedInteraction) {
+	        if (dao.existsById(id)) {
+	            updatedInteraction.setId(id);
+	            return dao.save(updatedInteraction);
+	        }
+	        return null;
+	    }
+
+	    @Override
+	    public void delete(Long id) {
+	        dao.deleteById(id);
+	    }
+	}
