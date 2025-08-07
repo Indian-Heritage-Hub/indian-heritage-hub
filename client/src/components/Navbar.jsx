@@ -1,31 +1,68 @@
-import { react } from "react";
-import { Link, useNavigate } from "react-router";
+import { useState } from "react";
+import Image from './IKImage';
+import { Link } from "react-router-dom";
+import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from "@clerk/clerk-react";
 
-function Navbar(){
+
+const NavBar = () => {
+    const [open, setOpen] = useState(false);
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-index">
-            <a className="navbar-brand fw-bold fst-italic px-4 navbar-title" Link="#">Indian Heritage Hub</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse justify-content-end mx-3" id="navbarSupportedContent">
-            
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
-                        <a className="nav-link fw-bold px-3 nav-comp" Link="#">Home</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link fw-bold px-3 nav-comp" Link="#">About Us</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link fw-bold px-3 nav-comp" Link="#">Articles</a>
-                    </li>
-                    <button class="btn fw-bold my-2 rounded-5 px-3 my-sm-0 btn-nav-s" type="submit">Sign In</button>
-                </ul>
-            </div>
-        </nav>
+      <div className="w-full pt-5 h-16 md:h-20 flex item-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex item-center gap-4 text-2xl font-bold">
+          <Image src="logo.png" alt="logo" w={62} h={52} />
+          <span>Indian Heritage Hub</span>
+        </Link>
+        {/* Mobile Menu */}
+        <div className="md:hidden">
+          {/* Mobile Button */}
+          <div
+            className="cursor-pointer text-4xl"
+            onClick={() => setOpen((prev) => !prev)}
+          >
+            {open ? "X" : "☰"}
+          </div>
+          {/* Mobile Linked List */}
+          <div
+            className={`w-full h-screen flex flex-col gap-8 font-medium text-lg items-center justify-center absolute top-16 transition-all ease-in-out 
+                ${open ? "-right-0" : "-right-[100%]"}`}
+          >
+            <Link to="/">Home</Link>
+            <Link to="/">Trending</Link>
+            <Link to="/">Most Popular</Link>
+            <Link to="/">About</Link>
+            <SignedOut>
+              <Link to="/login">
+                <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">
+                  Login
+                </button>
+              </Link>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
+        </div>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex item-center gap-8 xl:gap-12 font-medium">
+          <Link to="/">Home</Link>
+          <Link to="/">Trending</Link>
+          <Link to="/">Most Popular</Link>
+          <Link to="/">About</Link>
+          <SignedOut>
+            <Link to="/login">
+              <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">
+                Login
+              </button>
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
+      </div>
     );
 }
 
-export default Navbar;
+export default NavBar;
