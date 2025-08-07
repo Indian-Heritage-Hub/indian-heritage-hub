@@ -1,18 +1,10 @@
-import { Routes, Route } from "react-router";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.js";
-import './App.css'
-import Navbar from './components/Navbar';
-import LoginForm from "./components/Login";
-import IndexPage from "./components/IndexPage";
+import NavBar from "./components/NavBar"
 
-function App() {
-
+const App = () => {
   return (
-    <div>
-      {/* <Navbar /> */}
-      {/* <LoginForm /> */}
-      <IndexPage/>
+    <div className='px-4 md:px-8 lg:px-16 lx:px-32 2lx:px64'>
+      {/* Navbar */}
+      <NavBar />
     </div>
   )
 }
